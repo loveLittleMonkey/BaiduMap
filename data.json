@@ -1,0 +1,67 @@
+{
+    "points": [
+        {
+            "id": 0, 
+            "name": "北暨南大学科技园b区",
+            "lng": 23.148966, // 维度
+            "lat": 113.383104, // 经度
+            "address": "广东省广州市天河区科韵北路",
+            "label": "",
+            "description":"当前所在地址"
+        },
+        {
+            "id": 1, 
+            "name": "仲恺农业工程学院",
+            "lng": 23.37766, 
+            "lat": 113.452174,
+            "address": "广东省广州市白云区广新路388号",
+            "label": "高等院校",
+            "description":"我的大学"
+        },
+        {
+            "id": 2, 
+            "name": "",
+            "lng": 0, 
+            "lat": 0,
+            "address": "",
+            "label": "",
+            "description":""
+        },
+        {
+            "id": 3, 
+            "name": "",
+            "lng": 0, 
+            "lat": 0,
+            "address": "",
+            "label": "",
+            "description":""
+        },
+        {
+            "id": 4, 
+            "name": "",
+            "lng": 0, 
+            "lat": 0,
+            "address": "",
+            "label": "",
+            "description":""
+        },
+        {
+            "id": 5, 
+            "name": "",
+            "lng": 0, 
+            "lat": 0,
+            "address": "",
+            "label": "",
+            "description":""
+        },
+        {
+            "id": 6, 
+            "name": "",
+            "lng": 0, 
+            "lat": 0,
+            "address": "",
+            "label": "",
+            "description":""
+        }
+    ]
+}
