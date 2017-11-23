@@ -37,7 +37,7 @@
     var marker = new BMap.Marker(point);
     
     map.addOverlay(marker);
-    marker.addEventListener("mousedown",function(){
+    marker.addEventListener("click",function(){
         // 用了mouseover 会出错
 
         // 添加自定义覆盖物 
@@ -79,7 +79,7 @@
         // 设置元素外观
         div.style.width = winWidth/2 + "px"; 
         div.style.height = "100px"; 
-        div.style.background = "grey"; 
+        div.style.background = "white"; 
         div.style.opacity=0.8;
 
         // 内容展示
