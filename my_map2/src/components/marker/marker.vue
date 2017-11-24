@@ -18,13 +18,13 @@ export default {
   mounted () {
     let self = this
     var location = new BMap.Point(self.point.location.lat, self.point.location.lng)
+
     var myMarker = new SquareOverlay(location, 50, 'red')
     self.map.addOverlay(myMarker)
+
     myMarker.addEventListener('click', function () {
-      console.log('myMarker is click')
       self.$emit('clickEvent', self.point.id)
     })
-    console.log('myMarker', myMarker)
   }
 }
 </script>

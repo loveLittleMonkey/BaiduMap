@@ -22,7 +22,8 @@ export default {
       // 获取得到的是数组，不是对象
       map: {},
       markerIsClick: false,
-      point_message: {}
+      point_message: {},
+      pre_point: -1
     }
   },
   mounted () {
@@ -48,10 +49,18 @@ export default {
     // 父组件监听到了子组件marker 被点击了，修改message 的状态，显示信息的面板
     showMessage (data) {
       let self = this
+      if (self.pre_point === data) {
+        console.log(self.pre_point)
+        console.log(data)
+        console.log('has been click')
+      } else {
+        console.log(self.pre_point)
+        console.log(data)
+        console.log('new click')
+      }
       self.point_message = self.points[data]
       self.markerIsClick = true
-      console.log('点', data, '被点击了')
-      console.log('showMessage', self.markerIsClick)
+      self.pre_point = data
     },
     whereClick (event) {
       let self = this
@@ -64,8 +73,6 @@ export default {
     changeMarkerIsClick (event) {
       let self = this
       if (event.target.className === 'myMarker') {
-        console.log(event.target)
-        console.log('div is click')
         self.showMessage()
       } else {
         self.markerIsClick = false

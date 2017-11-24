@@ -12,7 +12,7 @@ SquareOverlay.prototype.initialize = function (map) {
   // 保存 map 对象实例
   this._map = map
   // 创建 div 元素，作为自定义覆盖物的容器
-  var div = document.createElement('button')
+  var div = document.createElement('div')
   div.style.position = 'absolute'
   div.className = 'myMarker'
   // 可以根据参数设置元素外观
@@ -20,12 +20,13 @@ SquareOverlay.prototype.initialize = function (map) {
   div.style.height = this._length + 'px'
   div.style.background = this._color
   div.style.opacity = 1
+
   // 将 div 添加到覆盖物容器中
   map.getPanes().markerPane.appendChild(div)
   // 保存 div 实例
   this._div = div
   // 需要将 div 元素作为方法的返回值，当调用该覆盖物的 show、
-// hide 方法，或者对覆盖物进行移除时，API 都将操作此元素。
+  // hide 方法，或者对覆盖物进行移除时，API 都将操作此元素。
   return div
 }
 
@@ -43,11 +44,16 @@ SquareOverlay.prototype.show = function () {
     this._div.style.display = ''
   }
 }
-  // 实现隐藏方法
+// 实现隐藏方法
 SquareOverlay.prototype.hide = function () {
   if (this._div) {
     this._div.style.display = 'none'
   }
+}
+
+// 添加监听事件
+SquareOverlay.prototype.addEventListener = function (event, fun) {  
+  this._div['on' + event] = fun
 }
 
 module.exports = SquareOverlay
