@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <v-header></v-header>
     <router-view/>
   </div>
 </template>
 
 <script>
+import header from './components/header/header'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    'v-header': header
+  }
+
 }
 </script>
 
@@ -16,4 +22,5 @@ export default {
   margin: 0px;
   padding: 0px;
 }
+
 </style>

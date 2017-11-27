@@ -19,7 +19,18 @@ SquareOverlay.prototype.initialize = function (map) {
   div.style.width = this._length + 'px'
   div.style.height = this._length + 'px'
   div.style.background = this._color
-  div.style.opacity = 1
+
+  var image =  document.createElement("img")
+  image.src = 'static/images/img.png'
+  image.style.width = this._length + 'px'
+  image.style.height = this._length + 'px'
+  div.appendChild(image)
+
+  tmpfun = map.onclick;
+  map.onclick = null;
+  div.addEventListener("touchstart", function() {    
+    map.onclick = tmpfun;
+  })
 
   // 将 div 添加到覆盖物容器中
   map.getPanes().markerPane.appendChild(div)

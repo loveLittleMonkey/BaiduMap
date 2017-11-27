@@ -12,6 +12,12 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "fs": "0.0.1-security",
+    "module": "^1.2.5",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.4",
+    "net": "^1.0.2",
+    "tls": "0.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

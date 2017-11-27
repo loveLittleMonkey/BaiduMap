@@ -1,11 +1,10 @@
 <template>
   <div>
-      <!-- <div id="container" v-on:click="whereClick">这里显示地图</div> -->
-      <div id="container" v-on:click="whereClick">这里显示地图</div>
-      <div v-for="point in points" :key=point.id>
-        <v-marker :point='point' :map='map' v-on:clickEvent="showMessage"></v-marker>
-      </div>
-      <v-panel v-if="markerIsClick" :map='map' :point='point_message'></v-panel>
+    <div id="container"></div>
+    <div v-for="point in points" :key=point.id>
+      <v-marker :point='point' :map='map' v-on:clickEvent="showMessage" v-on:touchstartEvent="showMessage"></v-marker>
+    </div>
+    <v-panel v-if="markerIsClick" :map='map' :point='point_message'></v-panel>
   </div>
 </template>
 
@@ -22,8 +21,7 @@ export default {
       // 获取得到的是数组，不是对象
       map: {},
       markerIsClick: false,
-      point_message: {},
-      pre_point: -1
+      point_message: {}
     }
   },
   mounted () {
@@ -33,6 +31,12 @@ export default {
     self.map = map
     var point = new BMap.Point(113.275, 23.117)
     map.centerAndZoom(point, 12)
+    // 增加控件
+    var opts = {offset: new BMap.Size(0, 200)}
+    map.addControl(new BMap.NavigationControl(opts))
+    map.addEventListener('click', function () {
+      self.whereClick(event)
+    })
     // 异步获取得到json数据
     axios.get('/api/points')
       .then(function (response) {
@@ -49,18 +53,8 @@ export default {
     // 父组件监听到了子组件marker 被点击了，修改message 的状态，显示信息的面板
     showMessage (data) {
       let self = this
-      if (self.pre_point === data) {
-        console.log(self.pre_point)
-        console.log(data)
-        console.log('has been click')
-      } else {
-        console.log(self.pre_point)
-        console.log(data)
-        console.log('new click')
-      }
       self.point_message = self.points[data]
       self.markerIsClick = true
-      self.pre_point = data
     },
     whereClick (event) {
       let self = this
@@ -72,9 +66,7 @@ export default {
     },
     changeMarkerIsClick (event) {
       let self = this
-      if (event.target.className === 'myMarker') {
-        self.showMessage()
-      } else {
+      if (event.target.className !== 'myMarker') {
         self.markerIsClick = false
       }
     }
@@ -89,7 +81,8 @@ export default {
 <style>
 #container{
   width: 100%;
-  height:100%;
+  height:90%;
   position:absolute;
+  top: 10%
 }
 </style>
